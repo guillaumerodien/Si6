@@ -1,0 +1,154 @@
+% Organisation des cours Si6
+%
+% Auteur  : Gregory DAVID
+%%
+
+\documentclass[12pt,a4paper,oneside,titlepage,final]{article}
+
+\usepackage{groolot_layout}
+\usepackage{groolot_glossaire}
+
+\newcommand{\MONTITRE}{Organisation des cours \glsentrytext{SiSIX}}
+\newcommand{\MONSOUSTITRE}{}
+\newcommand{\DISCIPLINE}{\glsentrytext{SiSIX} -- \glsentrydesc{SiSIX}}
+
+\usepackage[%
+	pdftex,%
+	pdfpagelabels=true,%
+	pdftitle={\MONTITRE},%
+	pdfauthor={Gr\'egory DAVID},%
+	pdfsubject={\MONSOUSTITRE},%
+        colorlinks,%
+]{hyperref}
+\usepackage{groolot_commands}
+
+\title{
+	\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr}
+		& {\Huge {\bf \MONTITRE}} \\
+		& {\huge \MONSOUSTITRE} \\
+		& {\large \DISCIPLINE} \\
+	\end{tabular*}
+}
+
+%\printanswers\groolotPhiligranne{CORRECTION}
+
+\begin{document}
+% Page de titre
+\maketitle
+
+% Copyright
+\include{copyright}
+
+% Contenu
+\HEADER{\MONTITRE}{\DISCIPLINE}
+
+\section{Référentiel}
+\subsection*{Activités support de l'acquisition des compétences}
+
+\paragraph{D1.1 -- Analyse de la demande}
+\begin{itemize}
+    \item A1.1.1 Analyse du cahier des charges d'un service à produire
+\end{itemize}
+
+\paragraph{D1.2 -- Choix d'une solution}
+\begin{itemize}
+    \item A1.2.4 Détermination des tests nécessaires à la validation
+    d'un service
+\end{itemize}
+
+\paragraph{D1.3 -- Mise en production d'un service}
+\begin{itemize}
+    \item A1.3.1 Tests d'intégration et d'acceptation d'un service
+    \item A1.3.3 Accompagnement de la mise en place d'un nouveau
+    service
+\end{itemize}
+
+\paragraph{D4.1 -- Conception et réalisation d'une solution
+  applicative}
+\begin{itemize}
+    \item A4.1.2 Conception ou adaptation de l'interface utilisateur
+    d'une solution applicative
+    \item A4.1.3 Conception ou adaptation d'une base de données
+    \item A4.1.7 Développement, utilisation ou adaptation de
+    composants logiciels
+    \item A4.1.8 Réalisation des tests nécessaires à la validation
+    d'éléments adaptés ou développés
+    \item A4.1.9 Rédaction d'une documentation technique
+    \item A4.1.10 Rédaction d'une documentation d'utilisation
+\end{itemize}
+
+\paragraph{D5.2 -- Gestion des compétences}
+\begin{itemize}
+    \item A5.2.1 Exploitation des référentiels, normes et standards
+    adoptés par le prestataire informatique
+    \item A5.2.2 Veille technologique
+\end{itemize}
+
+\subsection*{Savoirs-faire}
+\begin{itemize}
+    \item Concevoir une interface utilisateur
+    \item Interpréter un schéma de base de données
+    \item Développer et maintenir une application exploitant une base
+    de données partagée\footnote{hormis les techniques de gestion
+      concurrente des accès}
+    \item Élaborer un jeu d'essai
+    \item Valider et documenter une application
+    \item Rédiger une documentation d'utilisation
+    \item Utiliser des outils de travail collaboratif
+\end{itemize}
+
+\subsection*{Savoirs associés}
+\begin{itemize}
+    \item Architectures applicatives : concepts de base
+    \item Techniques de présentation des données et des documents
+    \item Interfaces homme-machine
+    \item Fonctionnalités d'un outil de développement rapide
+    d'applications
+    \item Typologie des tests
+    \item Techniques de mise au point
+    \item Bonnes pratiques de documentation d'une application
+    \item Techniques de rédaction d'une documentation d'utilisation
+\end{itemize}
+
+
+\section{Sélections et orientations}
+Bien que cela ne soit ni une préconisation nationale, ni académique,
+chaque savoir-faire se verra être potentiellement qualifié
+différemment en fonction de la spécialité choisie par l'étudiant :
+\gls{SLAM} ou \gls{SISR}.
+
+\subsection{Concevoir une interface utilisateur}
+\subsubsection{Pour les \gls{SLAM}}
+QTCreator \& C++
+\subsubsection{Pour les \gls{SISR}}
+HTML5 \& PHP
+
+\subsection{Interpréter un schéma de base de données}
+
+\subsection{Développer et maintenir une application exploitant une
+  base de données partagée}
+\subsubsection{Pour les \gls{SLAM}}
+\subsubsection{Pour les \gls{SISR}}
+
+\subsection{Élaborer un jeu d'essai}
+\subsubsection{Pour les \gls{SLAM}}
+\subsubsection{Pour les \gls{SISR}}
+
+\subsection{Valider et documenter une application}
+MarkDown sur GitHub \& Doxygen \& ReadTheDocs
+
+\subsection{Rédiger une documentation d'utilisation}
+
+\subsection{Utiliser des outils de travail collaboratif}
+
+
+
+% References bibliographiques
+\newpage \printbibheading
+\printbibliography[nottype=online,check=notonline,heading=subbibliography,title={Bibliographiques}]
+\printbibliography[check=online,heading=subbibliography,title={Webographiques}]
+
+\printglossaries
+
+\end{document}
+
