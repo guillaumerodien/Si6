@@ -23,6 +23,12 @@
 \usepackage{groolot_commands}
 \usepackage{amssymb}
 \usepackage{pdfpages}
+\usepackage{bashful}
+\lstdefinestyle{bashfulStdout}{
+  basicstyle=\scriptsize\ttfamily,
+  keywords={},
+  showstringspaces=false
+}%
 
 \title{
 	\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr}
@@ -40,6 +46,8 @@
 
 % Copyright
 \include{copyright}
+
+\tableofcontents{}
 
 % Contenu
 \HEADER{\MONTITRE}{\DISCIPLINE}
@@ -73,7 +81,7 @@ Le programme doit permettre de réaliser les calculs définis dans la
  exemple de compilation du fichier \lstinline{main.cpp} suivi de son
  exécution :
 
-\begin{lstlisting}[basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=groolotScript]
 lambda@linux:~/repertoireProjet> ls
 main.cpp
 lambda@linux:~/repertoireProjet> g++ -o calculatrice main.cpp
@@ -89,23 +97,56 @@ lambda@linux:~/repertoireProjet> ./calculatrice
   $\mod$ & \lstinline|type modulo(type operandeA, type operandeB)| & \checkmark & \checkmark & - & - \\
 }{Définition des fonctions nécessaires au programme}{tab:CahierDesCharges}{15cm}
 
-La documentation devra être générée en HTML à l'aide de \gls{doxygen} et son
-utilitaire de simplification de configuration :
-\lstinline{doxywizard}. Vous écrirez la documentation selon l'usage
-des commentaires \gls{doxygen} choisi parmi ceux proposés dans la
-documentation de \gls{doxygen} :
+La documentation devra être générée en HTML à l'aide de \gls{doxygen}
+et son utilitaire de simplification de configuration :
+\lstinline{doxywizard}\cite{doxywizard}. Vous écrirez la documentation
+selon l'usage des commentaires \gls{doxygen} choisi parmi ceux
+proposés dans la documentation de \gls{doxygen} :
 \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html}
 
-\lstinputlisting[basicstyle={\scriptsize\ttfamily},caption={Exemple de documentation de fonctions avec la syntaxe \gls{doxygen}},label={lst:ExempleDoxygen}]{exemple.cpp}
+\lstinputlisting[style=groolotScript,caption={Exemple de documentation de fonctions avec la syntaxe \gls{doxygen}},label={lst:ExempleDoxygen}]{exemple.cpp}
 
 \newpage
 \appendix
-\section{Documentation générée en HTML}
+\section{Annexes}
+\subsection{Documentation générée en HTML}
 \label{annexe:htmlOutputDoc}
+La configuration de \gls{doxygen} pour la sortie HTML :
+\lstset{caption={Extrait de la configuration HTML de \gls{doxygen} du fichier \lstinline[style=groolotNormal]|Doxyfile|},label={lst:doxyfileHTML}}
+\bash[stdout]
+egrep "^([^#].*_H|H)TML.*" Doxyfile
+\END
+
+La documentation ainsi générée est un ensemble de fichiers HTML, CSS, PNG et
+JavaScript. La lecture de la documentation passe alors obligatoirement
+par un navigateur Web.
+\lstset{caption={Contenu du répertoire de la documentation HTML}}
+\bash[stdout]
+ls doc/html
+\END
 \includepdf[nup=1x2,landscape=true,linktodoc,pages=-]{export_html_doxygen.pdf}
 
-\section{Documentation générée en \LaTeX}
+\subsection{Documentation générée en \LaTeX}
 \label{annexe:latexOutputDoc}
+La configuration de \gls{doxygen} pour la sortie \LaTeX :
+\lstset{caption={Extrait de la configuration \LaTeX de \gls{doxygen} du fichier \lstinline[style=groolotNormal]|Doxyfile|},label={lst:doxyfileLATEX}}
+\bash[stdout]
+egrep "^([^#].*_L|L)ATEX.*" Doxyfile
+\END
+
+La documentation ainsi générée est un ensemble de fichiers \LaTeX et
+un fichier de construction : \lstinline{Makefile}. La lecture de la
+documentation ne peut se faire que si l'on compile les fichiers \LaTeX
+en une sortie PDF par exemple.
+\bash[stdout]
+ls doc/latex
+\END
+
+\begin{lstlisting}[style=groolotScript]
+lambda@linux:~/repertoireProjet> cd doc/latex
+lambda@linux:~/repertoireProjet> make
+lambda@linux:~/repertoireProjet> evince refman.pdf
+\end{lstlisting}
 
 \includepdf[nup=1x2,landscape=true,linktodoc,pages={7-8}]{doc/latex/refman.pdf}
 
