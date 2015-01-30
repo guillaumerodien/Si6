@@ -1,0 +1,120 @@
+% Création et génération de la documentation technique
+%
+% Auteur  : Gregory DAVID
+%%
+
+\documentclass[12pt,a4paper,oneside,titlepage,final]{article}
+
+\usepackage{groolot_layout}
+\usepackage{groolot_glossaire}
+
+\newcommand{\MONTITRE}{Génération de documentation technique}
+\newcommand{\MONSOUSTITRE}{en s'appuyant sur un programme simple}
+\newcommand{\DISCIPLINE}{\glsentrytext{SiSIX} -- \glsentrydesc{SiSIX}}
+
+\usepackage[%
+	pdftex,%
+	pdfpagelabels=true,%
+	pdftitle={\MONTITRE},%
+	pdfauthor={Grégory DAVID},%
+	pdfsubject={\MONSOUSTITRE},%
+        colorlinks,%
+]{hyperref}
+\usepackage{groolot_commands}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+
+\title{
+	\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr}
+		& {\Huge {\bf \MONTITRE}} \\
+		& {\huge \MONSOUSTITRE} \\
+		& {\large \DISCIPLINE} \\
+	\end{tabular*}
+}
+
+%\printanswers\groolotPhiligranne{CORRECTION}
+
+\begin{document}
+% Page de titre
+\maketitle
+
+% Copyright
+\include{copyright}
+
+% Contenu
+\HEADER{\MONTITRE}{\DISCIPLINE}
+
+\section{Travail à faire}
+\label{sec:TAF}
+
+\begin{enumerate}
+    \item Créer le dépôt \gls{Git} sur la plateforme \gls{GitHub}
+    \item \label{item:CodeSource} Écrire le code source permettant de
+    répondre aux objectifs définis dans la section
+    \vref{sec:CahierDesCharges}
+    \item Suivre le \gls{workflow} \gls{Git} afin d'assurer
+    l'\emph{indexation}, la \emph{validation} et le \emph{poussage}
+    vers le dépôt central sur \gls{GitHub}
+    \item Rédiger la documentation technique en respectant la syntaxe
+    des commentaires \gls{doxygen}\cite{doxygen}
+    \item Refaire depuis l'item \vref{item:CodeSource} tant que
+    nécessaire
+    \item Générer la documentation en HTML à l'aide du compilateur
+    \gls{doxygen}
+\end{enumerate}
+
+\section{Cahier des charges fonctionnel}
+\label{sec:CahierDesCharges}
+Le programme doit permettre de réaliser les calculs définis dans la
+\tablename \vref{tab:CahierDesCharges}, et être écrit en C++.
+
+ Vous disposez du compilateur \lstinline{g++} pour effectuer la
+ compilation du code source en un fichier binaire exécutable. Voici un
+ exemple de compilation du fichier \lstinline{main.cpp} suivi de son
+ exécution :
+
+\begin{lstlisting}[basicstyle={\scriptsize\ttfamily}]
+lambda@linux:~/repertoireProjet> ls
+main.cpp
+lambda@linux:~/repertoireProjet> g++ -o calculatrice main.cpp
+lambda@linux:~/repertoireProjet> ./calculatrice
+\end{lstlisting}
+
+\tableauSized{clcccc}{
+  opérateur & fonction & \lstinline|int32_t| & \lstinline|int64_t| & \lstinline|float| & \lstinline|double| \\ \hline\hline
+  $+$ & \lstinline|type ajouter(type operandeA, type operandeB)| & \checkmark & \checkmark & \checkmark & \checkmark \\
+  $-$ & \lstinline|type soustraire(type operandeA, type operandeB)| & \checkmark & \checkmark & \checkmark & \checkmark \\
+  $\times$ & \lstinline|type multiplier(type operandeA, type operandeB)| & \checkmark & \checkmark & \checkmark & \checkmark \\
+  $\div$ & \lstinline|type diviser(type operandeA, type operandeB)| & \checkmark & \checkmark & \checkmark & \checkmark \\
+  $\mod$ & \lstinline|type modulo(type operandeA, type operandeB)| & \checkmark & \checkmark & - & - \\
+}{Définition des fonctions nécessaires au programme}{tab:CahierDesCharges}{15cm}
+
+La documentation devra être générée en HTML à l'aide de \gls{doxygen} et son
+utilitaire de simplification de configuration :
+\lstinline{doxywizard}. Vous écrirez la documentation selon l'usage
+des commentaires \gls{doxygen} choisi parmi ceux proposés dans la
+documentation de \gls{doxygen} :
+\url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html}
+
+\lstinputlisting[basicstyle={\scriptsize\ttfamily},caption={Exemple de documentation de fonctions avec la syntaxe \gls{doxygen}},label={lst:ExempleDoxygen}]{exemple.cpp}
+
+\newpage
+\appendix
+\section{Documentation générée en HTML}
+\label{annexe:htmlOutputDoc}
+\includepdf[nup=1x2,landscape=true,linktodoc,pages=-]{export_html_doxygen.pdf}
+
+\section{Documentation générée en \LaTeX}
+\label{annexe:latexOutputDoc}
+
+\includepdf[nup=1x2,landscape=true,linktodoc,pages={7-8}]{doc/latex/refman.pdf}
+
+% References bibliographiques
+\newpage \printbibheading
+\printbibliography[nottype=online,check=notonline,heading=subbibliography,title={Bibliographiques}]
+\printbibliography[check=online,heading=subbibliography,title={Webographiques}]
+
+\printglossaries
+
+\end{document}
+
