@@ -9,7 +9,7 @@
 \usepackage{groolot_glossaire}
 
 \newcommand{\MONTITRE}{Génération de documentation technique}
-\newcommand{\MONSOUSTITRE}{en s'appuyant sur un programme simple}
+\newcommand{\MONSOUSTITRE}{en s'appuyant sur un programme simple suivi avec \gls{Git}}
 \newcommand{\DISCIPLINE}{\glsentrytext{SiSIX} -- \glsentrydesc{SiSIX}}
 
 \usepackage[%
@@ -33,7 +33,7 @@
 \title{
 	\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr}
 		& {\Huge {\bf \MONTITRE}} \\
-		& {\huge \MONSOUSTITRE} \\
+		& {\Large \MONSOUSTITRE} \\
 		& {\large \DISCIPLINE} \\
 	\end{tabular*}
 }
@@ -47,7 +47,12 @@
 % Copyright
 \include{copyright}
 
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
 \tableofcontents{}
+\vspace*{\fill}
+\newpage
 
 % Contenu
 \HEADER{\MONTITRE}{\DISCIPLINE}
@@ -95,7 +100,7 @@ lambda@linux:~/repertoireProjet> ./calculatrice
   $\times$ & \lstinline|type multiplier(type operandeA, type operandeB)| & \checkmark & \checkmark & \checkmark & \checkmark \\
   $\div$ & \lstinline|type diviser(type operandeA, type operandeB)| & \checkmark & \checkmark & \checkmark & \checkmark \\
   $\mod$ & \lstinline|type modulo(type operandeA, type operandeB)| & \checkmark & \checkmark & - & - \\
-}{Définition des fonctions nécessaires au programme}{tab:CahierDesCharges}{15cm}
+}{Définition des fonctions nécessaires au programme, voir exemple d'implémentation dans le \lstlistingname \vref{lst:ExempleDoxygen}}{tab:CahierDesCharges}{15cm}
 
 La documentation devra être générée en HTML à l'aide de \gls{doxygen}
 et son utilitaire de simplification de configuration :
@@ -104,7 +109,7 @@ selon l'usage des commentaires \gls{doxygen} choisi parmi ceux
 proposés dans la documentation de \gls{doxygen} :
 \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html}
 
-\lstinputlisting[style=groolotScript,caption={Exemple de documentation de fonctions avec la syntaxe \gls{doxygen}},label={lst:ExempleDoxygen}]{exemple.cpp}
+\lstinputlisting[style=groolotScript,language={C++},caption={Exemple de documentation de fonctions avec la syntaxe \gls{doxygen}},label={lst:ExempleDoxygen}]{exemple.cpp}
 
 \newpage
 \appendix
@@ -112,7 +117,7 @@ proposés dans la documentation de \gls{doxygen} :
 \subsection{Documentation générée en HTML}
 \label{annexe:htmlOutputDoc}
 La configuration de \gls{doxygen} pour la sortie HTML :
-\lstset{caption={Extrait de la configuration HTML de \gls{doxygen} du fichier \lstinline[style=groolotNormal]|Doxyfile|},label={lst:doxyfileHTML}}
+\lstset{caption={Extrait de la configuration HTML de \gls{doxygen} du fichier \texttt{Doxyfile}},label={lst:doxyfileHTML}}
 \bash[stdout]
 egrep "^([^#].*_H|H)TML.*" Doxyfile
 \END
@@ -124,12 +129,12 @@ par un navigateur Web.
 \bash[stdout]
 ls doc/html
 \END
-\includepdf[nup=1x2,landscape=true,linktodoc,pages=-]{export_html_doxygen.pdf}
+\includepdf[nup=1x2,landscape=true,pages=-]{export_html_doxygen.pdf}
 
 \subsection{Documentation générée en \LaTeX}
 \label{annexe:latexOutputDoc}
 La configuration de \gls{doxygen} pour la sortie \LaTeX :
-\lstset{caption={Extrait de la configuration \LaTeX de \gls{doxygen} du fichier \lstinline[style=groolotNormal]|Doxyfile|},label={lst:doxyfileLATEX}}
+\lstset{caption={Extrait de la configuration \LaTeX de \gls{doxygen} du fichier \texttt{Doxyfile}},label={lst:doxyfileLATEX}}
 \bash[stdout]
 egrep "^([^#].*_L|L)ATEX.*" Doxyfile
 \END
@@ -138,17 +143,18 @@ La documentation ainsi générée est un ensemble de fichiers \LaTeX et
 un fichier de construction : \lstinline{Makefile}. La lecture de la
 documentation ne peut se faire que si l'on compile les fichiers \LaTeX
 en une sortie PDF par exemple.
+\lstset{caption={Contenu du répertoire de la documentation \LaTeX}}
 \bash[stdout]
 ls doc/latex
 \END
 
-\begin{lstlisting}[style=groolotScript]
+\begin{lstlisting}[style=groolotScript,caption={Instruction pour compiler la documentation \LaTeX en PDF}]
 lambda@linux:~/repertoireProjet> cd doc/latex
 lambda@linux:~/repertoireProjet> make
 lambda@linux:~/repertoireProjet> evince refman.pdf
 \end{lstlisting}
 
-\includepdf[nup=1x2,landscape=true,linktodoc,pages={7-8}]{doc/latex/refman.pdf}
+\includepdf[nup=1x2,landscape=true,pages={7-8}]{doc/latex/refman.pdf}
 
 % References bibliographiques
 \newpage \printbibheading
