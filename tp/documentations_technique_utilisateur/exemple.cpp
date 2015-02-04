@@ -22,7 +22,7 @@ int64_t ajouter(int64_t operandeA, int64_t operandeB)
 ///
 /// \param operandeA un entier 32bits
 /// \param operandeB un entier 32bits
-/// \return La somme des deux entiers 64bits fournis en paramètres
+/// \return La somme des deux entiers 32bits fournis en paramètres
 /// \sa ajouter(int64_t, int64_t), ajouter(double, double), ajouter(float, float)
 ///
 int32_t ajouter(int32_t operandeA, int32_t operandeB)
