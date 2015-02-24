@@ -1,0 +1,234 @@
+% Decouverte de l'IDE QTcreator
+%
+% Auteur  : Gregory DAVID
+%%
+
+\documentclass[12pt,a4paper,oneside,titlepage,final]{article}
+
+\usepackage{groolot_layout}
+\usepackage{groolot_glossaire}
+\usepackage{groolot_commands}
+\usepackage{flafter}
+
+\newcommand{\MONTITRE}{Programmation Événementielle}
+\newcommand{\MONSOUSTITRE}{Découverte de l'\glsentrytext{IDE} \gls{QtCreator}}
+\newcommand{\DISCIPLINE}{\glsentrytext{SiSIX} -- \glsentrydesc{SiSIX}}
+
+\usepackage[%
+	pdftex,%
+	pdfpagelabels=true,%
+	pdftitle={\MONTITRE},%
+	pdfauthor={Grégory DAVID},%
+	pdfsubject={\MONSOUSTITRE},%
+        colorlinks,%
+]{hyperref}
+
+\title{
+	\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr}
+		& {\Huge {\bf \MONTITRE}} \\
+		& {\huge \MONSOUSTITRE} \\
+		& {\large \DISCIPLINE} \\
+	\end{tabular*}
+}
+
+%\printanswers\groolotPhiligranne{CORRECTION}
+
+\begin{document}
+% Page de titre
+\maketitle
+
+% Copyright
+\include{copyright}
+
+% Contenu
+\HEADER{\MONTITRE}{\DISCIPLINE}
+
+L'ensemble de la documentation de \gls{QtCreator} peut être consultée
+en ligne : voir \cite{QTCREATOR_MANUAL}. Autrement, voici un rapide
+descriptif de l'application.
+
+\section{Interface graphique de l'\glsentrytext{IDE} \gls{QtCreator}}
+La \gls{GUI} de \gls{QtCreator} (voir \figurename
+\vref{fig:qtcreatorGUI}) est scindée en plusieurs zones, indépendantes
+du mode dans lequel nous nous trouvons :
+\begin{itemize}
+    \item Le sélecteur de mode : \figurename
+    \vref{fig:qtcreatorGUImodeSelector}
+    \item Le sélecteur de production : \figurename
+    \vref{fig:qtcreatorGUIkitSelector}
+    \item La zone de compilation, de débogage et d'exécution :
+    \figurename \vref{fig:qtcreatorGUIrunDebugCompile}
+    \item Le moteur de recherche : \figurename
+    \vref{fig:qtcreatorGUIsearchEngine}
+    \item Les panneaux de sorties (informations variées) : \figurename
+    \vref{fig:qtcreatorGUIoutputPanes}
+    \item Construire un nouveau projet (enfin) : \figurename
+    \vref{fig:qtcreatorGUInewProject}
+\end{itemize}
+
+\image{data/qt-creator_GUI.png}{width=15cm}{\gls{GUI} de l'\gls{IDE}
+  \gls{QtCreator}}{fig:qtcreatorGUI}
+
+\image{data/qt-creator_GUI_modeSelector.png}{width=10cm}{Le sélecteur
+  de mode}{fig:qtcreatorGUImodeSelector}
+
+\image{data/qt-creator_GUI_kitSelector.png}{width=10cm}{Le sélecteur
+  de production}{fig:qtcreatorGUIkitSelector}
+
+\image{data/qt-creator_GUI_run-debug-compile.png}{width=10cm}{Les
+  commandes d'exécution, de débogage et de
+  compilation}{fig:qtcreatorGUIrunDebugCompile}
+
+\image{data/qt-creator_GUI_searchEngine.png}{width=10cm}{Le moteur de
+  recherche}{fig:qtcreatorGUIsearchEngine}
+
+\image{data/qt-creator_GUI_outputPanes.png}{width=10cm}{Les panneaux
+  de sorties}{fig:qtcreatorGUIoutputPanes}
+
+\image{data/qt-creator_GUI_newProject.png}{width=10cm}{Créer un
+  nouveau projet}{fig:qtcreatorGUInewProject}
+
+\subsection{Création d'un nouveau projet}
+\label{sec:CreationNewProject}
+
+\subsubsection{Choix du modèle pour l'application à construire}
+La boîte de dialogue \figurename
+\vref{fig:qtcreatorGUInewProjectModel} permet de choisir le modèle de
+l'application à construire. Le modèle est un moyen de configurer
+spécifiquement l'\gls{IDE} et les composants afin d'optimiser la
+construction et la compilation du projet.
+
+\image{data/qt-creator_GUI_newProject_model.png}{width=12cm}{Définir
+  le modèle d'application à
+  construire}{fig:qtcreatorGUInewProjectModel}
+
+\subsubsection{Choix du lieu de stockage du projet}
+La boîte de dialogue \figurename
+\vref{fig:qtcreatorGUInewProjectLocation} permet de spécifier le lieu
+de stockage du projet.
+
+Assurez-vous d'avoir les droits suffisants sur le répertoire parent.
+
+\image{data/qt-creator_GUI_newProject_location.png}{width=12cm}{Définir
+  le lieu de stockage du projet}{fig:qtcreatorGUInewProjectLocation}
+
+\subsubsection{Détails du projet}
+La boîte de dialogue \figurename
+\vref{fig:qtcreatorGUInewProjectDetails} vous donne l'occasion de
+paramétrer le nom de la classe principale permettant de construire une
+fenêtre graphique. Mettez encore une fois un nom de classe qui soit
+cohérent avec votre projet.
+
+\image{data/qt-creator_GUI_newProject_details.png}{width=12cm}{Donner
+  les éléments détaillés du projet}{fig:qtcreatorGUInewProjectDetails}
+
+\subsubsection{Choix du kit de production}
+La boîte de dialogue \figurename \vref{fig:qtcreatorGUInewProjectKit}
+vous permet de choisir le mode de production de votre appplication
+(dans un environnement paramétré par défaut, il n'y a pas d'autre
+choix que le choix par défaut \emph{Desktop}).
+
+\image{data/qt-creator_GUI_newProject_kit.png}{width=12cm}{Sélectionner
+  le kit de production du projet}{fig:qtcreatorGUInewProjectKit}
+
+\subsubsection{Choix du gestionnaire de version \gls{Git}}
+La boîte de dialogue \figurename \vref{fig:qtcreatorGUInewProjectGit}
+vous permet de sélectionner \gls{Git} en tant que gestionnaire de
+version.
+
+Il va de soit qu'il n'est pas envisageable que vous n'utilisiez pas de
+dépôt \gls{Git} pour chacun de vos projets.
+
+\image{data/qt-creator_GUI_newProject_versioningGit.png}{width=12cm}{Faire
+  suivre le projet avec \gls{Git}}{fig:qtcreatorGUInewProjectGit}
+
+\subsubsection{Projet créé, en avant !}
+La \figurename \vref{fig:qtcreatorGUInewProjectDone} prséente
+l'interface d'\emph{édition}, rendue accessible à la fin de la
+création de votre projet.
+
+Vous allez enfin pouvoir \textbf{programmer}.
+
+\image{data/qt-creator_GUI_newProject_done.png}{width=15cm}{Interface
+  d'édition du code de l'application une fois la création
+  achevée}{fig:qtcreatorGUInewProjectDone}
+
+\subsection{Concevoir une \gls{GUI}}
+\label{sec:concevoirGUI}
+Dès lors que le projet est créé (voir \vref{sec:CreationNewProject}),
+nous pouvons voir qu'il existe un formulaire par défaut de
+créé. L'ouverture, par double clic, dudit formulaire ouvre le mode
+\emph{Design} dans l'\gls{IDE}, tel que présenté dans la \figurename
+\vref{fig:qtcreatorGUIDesign}.
+
+\image{data/qt-creator_GUI_Design.png}{width=15cm}{Mode de création
+  d'interface graphique}{fig:qtcreatorGUIDesign}
+
+\subsubsection{Espace de création du contenu du formulaire}
+\label{sec:concevoirGUIformulaire}
+
+\image{data/qt-creator_GUI_Design_windowDesign.png}{width=15cm}{Espace
+  de création du contenu du
+  formulaire}{fig:qtcreatorGUIDesignFormulaire}
+
+\subsubsection{Catalogue des \emph{widgets} intégrables dans le
+  formulaire}
+\label{sec:concevoirGUIwidgetsCatalogue}
+
+\image{data/qt-creator_GUI_Design_widgetBox.png}{width=15cm}{Catalogue
+  des \emph{widgets disponibles}}{fig:qtcreatorGUIDesignCatalogue}
+
+\subsubsection{Construction du formulaire par glisser-déposer}
+\label{sec:concevoirGUIDragDrop}
+
+\image{data/qt-creator_GUI_Design_DragDropWidget.png}{width=15cm}{La
+  construction du formulaire se fait par glisser-déposer des
+  \emph{widgets} issus du catalogue}{fig:qtcreatorGUIDesignDragDrop}
+
+\subsubsection{Liste des widgets insérés dans le formulaire}
+\label{sec:concevoirGUIwidgetsList}
+Chacun des \emph{widget} inséré dans le formulaire est listé dans la
+zone identifiée dans la \figurename
+\vref{fig:qtcreatorGUIDesignWidgetsList}.
+
+\image{data/qt-creator_GUI_Design_widgetsList.png}{width=15cm}{Liste
+  des \emph{widgets} insérés dans le formulaire
+  courant}{fig:qtcreatorGUIDesignWidgetsList}
+
+\subsubsection{Propriétés des widgets}
+\label{sec:concevoirGUIwidgetProperties}
+Chaque objet \gls{Qt} possède des propriétés propres et d'autres qui
+lui sont héritées de son(ses) parent(s). Chacune de ses propriétés est
+modifiable à la main depuis la zone présentée en \figurename
+\vref{fig:qtcreatorGUIDesignWidgetProperties} ou programmatiquement
+(seulement si l'attribut est public, sinon il faut passer par un
+accesseur).
+
+\image{data/qt-creator_GUI_Design_widgetProperties.png}{width=15cm}{Zone
+  des propriétés du \emph{widget}
+  courant}{fig:qtcreatorGUIDesignWidgetProperties}
+
+
+\section{Travail À Faire}
+L'objectif est de concevoir une application ressemblant à la
+\figurename \vref{fig:appObjectif} et ayant le comportement tel
+qu'identifiable dans la vidéo accessible à l'adresse suivante :
+\url{http://youtu.be/YiZIAqVtTRc}.
+\begin{enumerate}
+    \item Concevoir un projet suivant le modèle \emph{Application \gls{Qt} avec widgets} ;
+    \item Ajouter les \emph{widgets} nécessaires permettant de reproduire l'application proposée ;
+    \item Mettre en œuvre les comportements visibles sur la vidéo de présentation.
+\end{enumerate}
+
+\image{data/application_a_reproduire.png}{width=10cm}{Design de
+  l'application à reproduire}{fig:appObjectif}
+
+% References bibliographiques
+\newpage \printbibheading
+\printbibliography[nottype=online,check=notonline,heading=subbibliography,title={Bibliographiques}]
+\printbibliography[check=online,heading=subbibliography,title={Webographiques}]
+
+\printglossaries
+
+\end{document}
+
